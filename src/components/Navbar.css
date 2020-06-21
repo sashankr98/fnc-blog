@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    /* transition: 0.2s; */
+    margin: auto;
+    display: inline-block;
+}
+
+ul li {
+    display: inline-block;
+    margin: 10px 20px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 18pt;
+    transition: 0.2s;
+}
+
+ul:hover {
+    color: #999999;
+    transition: 0.2s;
+}
+
+ul li:hover {
+    color: #000000;
+}
+
+.focused {
+    text-decoration: underline;
+    transition: 0.2s;
+}
+/* 
+ul:hover .focused {
+    text-decoration: none;
+} */
