@@ -1,37 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Navbar.css';
 
-function Navbar(props) {
-    const[focused, setFocused] = useState(props.focused)
-    function handleClick(event) {
-        setFocused(event.target.attributes.name.value);
-        props.onPageClick(event.target.attributes.name.value);
+class Navbar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            focused: this.props.focused
+        };
     }
-    return (
-        <div className="Navbar">
-            <ul>
-                {
-                    props.pages.map(function(page, index){
-                        var style = '';
-                        if(focused === page) {
-                            style = 'focused';
-                        }
-                        return (
-                        <li 
-                        className={style} 
-                        name={page}
-                        key={page} 
-                        onClick={handleClick}>
-                            {page}
-                        </li>);
-                    })
-                }
-                
-                {/* <li>Posts</li>
-                <li>About</li> */}
-            </ul>
-        </div>
-    );
+
+    handlePageClick(event) {
+        this.setState({
+            focused: event.target.attributes.name.value
+        });
+        this.props.onPageClick(event.target.attributes.name.value);
+    }
+
+    render() {
+        var self = this;
+        return (
+            <div className="Navbar">
+                <h1>Friendly Neighbourhood Cucumber</h1>
+                <ul id='pages'>
+                    {
+                        this.props.pages.map((page) => {
+                            var style = this.state.focused === page ? 'focused ' : '';
+                            style = style + 'page'
+                            return (
+                                <li
+                                    className={style}
+                                    name={page}
+                                    key={page}
+                                    onClick={self.handlePageClick.bind(self)}>
+                                    {page}
+                                </li>);
+                        })
+                    }
+                </ul>
+            </div>
+        );
+    }
 }
 
 export default Navbar;

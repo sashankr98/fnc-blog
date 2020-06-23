@@ -3,28 +3,35 @@
     margin: 0;
 }
 
-ul {
+.Navbar h1 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 1em;
+  text-align: center;
+  font-size: 28pt;
+}
+
+#pages {
     list-style: none;
     /* transition: 0.2s; */
-    margin: auto;
+    /* margin: 0 auto 0.5em; */
     display: inline-block;
 }
 
-ul li {
+#pages .page {
     display: inline-block;
-    margin: 10px 20px;
+    margin: 0 1em 1em;
     cursor: pointer;
     font-family: 'Playfair Display', serif;
     font-size: 18pt;
     transition: 0.2s;
 }
 
-ul:hover {
+#pages:hover {
     color: #999999;
     transition: 0.2s;
 }
 
-ul li:hover {
+#pages .page:hover {
     color: #000000;
 }
 

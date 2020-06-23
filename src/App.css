@@ -1,23 +1,10 @@
 .App {
   text-align: center;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
-.App h1 {
-  font-family: 'Montserrat', sans-serif;
-  margin: 1.5em 1.5em 0.5em;
-  text-align: center;
-  font-size: 28pt;
-}
-/* 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* header {
+  border-bottom: 1px black solid;
 } */

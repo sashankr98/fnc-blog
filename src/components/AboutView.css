@@ -1,0 +1,50 @@
+.About {
+    width: 50%;
+    padding: 0%;
+    margin: auto;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    margin: 1em auto;
+    text-align: justify;
+}
+
+#social-intro {
+    text-align: center;
+    margin: 3em auto 0;
+}
+
+a {
+    color: black;
+}
+
+#credit {
+    font-family: 'Playfair Display', serif;
+    font-size: x-small;
+}
+
+#social {
+    list-style: none;
+    display: inline-block;
+}
+
+#social li {
+    display: inline-block;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#social:hover li:not(:hover) {
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+img {
+    width: 3em;
+    margin: 1em;
+}
+
+img:hover {
+    opacity: 1;
+}

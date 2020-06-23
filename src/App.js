@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import PageView from './components/PageView';
 
-function App() {
-  const [view, setView] = useState('Posts');
-
-  function handlePageClick(page) {
-    setView(page);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: 'About'
+    };
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Friendly Neighbourhood Cucumber</h1>
-        <Navbar pages={['Posts', 'About']} focused={view} onPageClick={handlePageClick}/>
-        <p>{view}</p>
-      </header>
-    </div>
-  );
+  handlePageClick(page) {
+    this.setState({
+      view: page
+    });
+  }
+
+  render() {
+    var self = this;
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Navbar pages={['Posts', 'About']} focused={this.state.view} onPageClick={self.handlePageClick.bind(self)} />
+        </header>
+        <PageView page={this.state.view} />
+      </div>
+    )
+  }
 }
 
 export default App;
