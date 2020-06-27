@@ -1,34 +1,66 @@
 import React from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	Redirect
+} from 'react-router-dom';
+
+import AboutView from './components/AboutView';
 import './App.css';
 
-import Navbar from './components/Navbar';
-import PageView from './components/PageView';
-
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      view: 'About'
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			view: 'Posts'
+		};
 
-  handlePageClick(page) {
-    this.setState({
-      view: page
-    });
-  }
+		this.setFocus = this.setFocus.bind(this);
+	}
 
-  render() {
-    var self = this;
-    return (
-      <div className="App">
-        <header className="App-header">
-          <Navbar pages={['Posts', 'About']} focused={this.state.view} onPageClick={self.handlePageClick.bind(self)} />
-        </header>
-        <PageView page={this.state.view} />
-      </div>
-    )
-  }
+	setFocus(event) {
+		this.setState({
+			view: event.target.innerText
+		});
+	}
+
+	render() {
+		return (
+			<Router>
+				<div className="App">
+					<header className="App-header">
+						<h1>Friendly Neighbourhood Cucumber</h1>
+						<ul id="pages">
+							<li value="Posts">
+								<Link
+									to="/posts"
+									className={this.state.view === 'Posts' ? 'focused' : null}
+									onClick={this.setFocus}>Posts</Link>
+							</li>
+							<li value="About">
+								<Link
+									to="/about"
+									className={this.state.view === 'About' ? 'focused' : null}
+									onClick={this.setFocus}>About</Link>
+							</li>
+						</ul>
+					</header>
+
+					<Switch>
+						<Redirect exact from="/" to="/posts" />
+						<Route path="/posts">
+							<h2>Posts Selected</h2>
+						</Route>
+						<Route path="/about">
+							<AboutView />
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+		)
+	}
 }
 
 export default App;

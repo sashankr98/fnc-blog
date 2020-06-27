@@ -1,10 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 .App {
   text-align: center;
   align-items: center;
   justify-content: center;
 }
 
+.App-header h1 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 1em;
+  font-size: 28pt;
+}
 
-/* header {
-  border-bottom: 1px black solid;
-} */
+#pages {
+  list-style: none;
+}
+
+#pages li {
+  display: inline-block;
+  margin: 0 1em 1em;
+  font-family: 'Playfair Display', serif;
+  font-size: 18pt;
+  transition: 0.2s;
+}
+
+a {
+  outline: 0;
+}
+
+#pages a {
+  text-decoration: none;
+}
+
+#pages a.focused {
+  text-decoration: underline;
+}
+
+#pages:hover a {
+  color: #999999;
+  transition: 0.2s;
+}
+
+#pages a:hover {
+  color: #000000;
+}
