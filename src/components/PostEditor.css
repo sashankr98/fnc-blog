@@ -1,0 +1,71 @@
+.editor-page {
+    width: 60%;
+    margin: auto;
+}
+
+#editor-root {
+    text-align: left;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12pt;
+    padding: 15px;
+}
+
+#post-editor {
+    border-top: 1px solid #ddd;
+    cursor: text;
+    margin-top: 0.5em;
+    padding-top: 2em;
+    min-height: 200px;
+    text-align: justify;
+}
+
+#post-editor .blockquote {
+  border-left: 5px solid #eee;
+  color: #666;
+  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-style: italic;
+  margin: 16px 0;
+  padding: 10px 20px;
+}
+
+.align-justify {
+    text-align: justify;
+}
+
+.public-DraftStyleDefault-ltr {
+  text-align: inherit;
+}
+
+.align-justify .public-DraftStyleDefault-ltr {
+  text-align: justify;
+  white-space: normal;
+}
+
+#post-editor .public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  padding: 20px;
+}
+
+.public-DraftStyleDefault-ltr {
+    text-align: justify;
+}
+
+.controls {
+    font-family: 'Helvetica', sans-serif;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.styleButton {
+    color: #999999;
+    cursor: pointer;
+    margin-right: 16px;
+    padding: 2px 0;
+    display: inline-block;
+}
+
+.activeButton {
+    color: #5890ff;
+}

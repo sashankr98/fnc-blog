@@ -10,18 +10,30 @@
 }
 
 .App-header h1 {
+  margin: 1em 1em 0;
+  font-size: 30pt;
+  text-align: center;
+}
+
+h1 {
   font-family: 'Montserrat', sans-serif;
-  margin: 1em;
   font-size: 28pt;
+  text-align: left;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  text-align: justify;
 }
 
 #pages {
   list-style: none;
+  display: inline-block;
 }
 
 #pages li {
   display: inline-block;
-  margin: 0 1em 1em;
+  margin: 1em;
   font-family: 'Playfair Display', serif;
   font-size: 18pt;
   transition: 0.2s;

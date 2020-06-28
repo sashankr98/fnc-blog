@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import AboutView from './components/AboutView';
+import PostEditor from './components/PostEditor';
 import './App.css';
 
 class App extends React.Component {
@@ -55,6 +56,9 @@ class App extends React.Component {
 						</Route>
 						<Route path="/about">
 							<AboutView />
+						</Route>
+						<Route path="/editor">
+							<PostEditor />
 						</Route>
 					</Switch>
 				</div>

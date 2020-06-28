@@ -4,10 +4,8 @@
     margin: auto;
 }
 
-p {
-    font-family: 'Montserrat', sans-serif;
+.About p {
     margin: 1em auto;
-    text-align: justify;
 }
 
 #social-intro {
