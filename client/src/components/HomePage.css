@@ -1,0 +1,35 @@
+.nav-bar h1 {
+  margin: 1em 1em 0;
+  font-size: 30pt;
+  text-align: center;
+}
+
+#pages {
+  list-style: none;
+  display: inline-block;
+}
+
+#pages li {
+  display: inline-block;
+  margin: 1em;
+  font-family: 'Playfair Display', serif;
+  font-size: 18pt;
+  transition: 0.2s;
+}
+
+#pages a {
+  text-decoration: none;
+}
+
+#pages a.focused {
+  text-decoration: underline;
+}
+
+#pages:hover a {
+  color: #999999;
+  transition: 0.2s;
+}
+
+#pages a:hover {
+  color: #000000;
+}

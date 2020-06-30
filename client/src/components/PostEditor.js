@@ -68,6 +68,7 @@ class PostEditor extends React.Component {
     render() {
         return (
             <div className="editor-page">
+                <h1>Create Post</h1>
                 <div id="editor-root">
                     <BlockStyleControls
                         editorState={this.state.editorState}
