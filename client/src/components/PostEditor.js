@@ -10,8 +10,10 @@ class PostEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            title: "",
             editorState: EditorState.createEmpty(),
-            content: ""
+            content: "",
+            showPreview: false
         };
 
         this.onChange = editorState => this.setState({ editorState });
@@ -20,7 +22,8 @@ class PostEditor extends React.Component {
         this.toggleBlockType = this.toggleBlockType.bind(this);
         this.toggleInlineStyle = this.toggleInlineStyle.bind(this);
 
-        this.logContent = this.logContent.bind(this);
+        this.previewContent = this.previewContent.bind(this);
+        this.titleChanged = this.titleChanged.bind(this);
     }
 
     handleKeyCommand(command, editorState) {
@@ -57,18 +60,29 @@ class PostEditor extends React.Component {
         );
     }
 
-    logContent() {
-        const current = this.state.editorState.getCurrentContent();
-        const markdown = stateToMarkdown(current);
-        this.setState({
-            content: markdown
-        });
+    previewContent() {
+        if (!this.state.showPreview) {
+            this.setState({ showPreview: true });
+            const current = this.state.editorState.getCurrentContent();
+            const markdown = stateToMarkdown(current);
+            this.setState({
+                content: markdown
+            });
+        } else {
+            this.setState({ showPreview: false });
+        }
+
+    }
+
+    titleChanged(event) {
+        this.setState({ title: event.target.value });
     }
 
     render() {
         return (
             <div className="editor-page">
                 <h1>Create Post</h1>
+                <input type="text" value={this.state.title} onChange={this.titleChanged} placeholder="Title" />
                 <div id="editor-root">
                     <BlockStyleControls
                         editorState={this.state.editorState}
@@ -87,11 +101,12 @@ class PostEditor extends React.Component {
                             blockStyleFn={getBlockStyle}
                             customStyleMap={styleMap}
                             textAlignment='left'
-                            spellCheck="true" />
+                            spellCheck={true} />
                     </div>
                 </div>
-                <button onClick={this.logContent}>Log Content</button>
-                <div>
+                <button onClick={this.previewContent}>Preview Content</button>
+                <div className={this.state.showPreview ? 'show-preview' : 'hide-preview'}>
+                    <h1> {this.state.title} </h1>
                     <ReactMarkdown source={this.state.content} />
                 </div>
             </div>
@@ -108,11 +123,8 @@ const styleMap = {
     },
 };
 
-function getBlockStyle(block) {
-    switch (block.getType()) {
-        case 'blockquote': return 'blockquote align-justify';
-        default: return 'align-justify';
-    }
+function getBlockStyle() {
+    return 'align-justify';
 }
 
 const BLOCK_TYPES = [
@@ -122,10 +134,10 @@ const BLOCK_TYPES = [
     { label: 'H4', style: 'header-four' },
     { label: 'H5', style: 'header-five' },
     { label: 'H6', style: 'header-six' },
-    { label: 'Blockquote', style: 'blockquote' },
+    // { label: 'Blockquote', style: 'blockquote' },
     { label: 'UL', style: 'unordered-list-item' },
     { label: 'OL', style: 'ordered-list-item' },
-    { label: 'Code Block', style: 'code-block' },
+    // { label: 'Code Block', style: 'code-block' },
 ];
 
 class StyleButton extends React.Component {

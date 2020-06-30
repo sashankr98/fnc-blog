@@ -1,25 +1,28 @@
 * {
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 .App {
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 28pt;
-  text-align: left;
+	font-size: 28pt;
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Montserrat', sans-serif;
 }
 
 p {
-  font-family: 'Montserrat', sans-serif;
-  text-align: justify;
+	font-family: 'Montserrat', sans-serif;
+	text-align: justify;
 }
 
 a {
-  outline: 0;
+	outline: 0;
 }

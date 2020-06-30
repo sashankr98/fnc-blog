@@ -5,13 +5,9 @@ const morgan = require('morgan');
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+app.use(morgan(':method :url :status - :response-time ms'));
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// app.get('/api/hello', (req, res) => {
-//     res.send({ express: "Hello World" });
-// });
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/hello', (req, res) => {
     res.json({ express: "Hello World" });
