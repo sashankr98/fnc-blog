@@ -8,7 +8,7 @@
 	margin: 0.5em;
 }
 
-.editor-page button {
+.actions button {
 	outline: none;
 	border: 0.5px black solid;
 	margin: 0.5em;
@@ -18,7 +18,7 @@
 	transition: 0.2s;
 }
 
-.editor-page button:hover {
+.actions button:hover {
 	background-color: #CCCCCC;
 	cursor: pointer;
 	transition: 0.2s;
@@ -103,8 +103,10 @@ input[type="text"]{
 
 .show-preview {
 	display: block;
+	transition: ease-in;
 }
 
 .hide-preview {
 	display: none;
+	transition: ease-out;
 }

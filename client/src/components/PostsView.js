@@ -5,34 +5,21 @@ class PostView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [],
-            text: ""
+            list: []
         }
 
         this.itemClicked = this.itemClicked.bind(this);
     }
 
     componentDidMount() {
-        this.callApi()
-            .then(res => this.setState({ text: res.express }))
-            .catch(err => console.log(err));
-
-        this.testDb()
+        this.getPostList()
             .then(res => this.setState({ list: res }))
             .catch(err => console.log(err));
 
     }
 
-    callApi = async () => {
-        const res = await fetch('/api/hello');
-        const body = await res.json();
-        if (res.status !== 200) throw Error(body.message);
-
-        return body;
-    };
-
-    testDb = async () => {
-        const res = await fetch('/api/test');
+    getPostList = async () => {
+        const res = await fetch('/api/getPostList');
         const body = await res.json();
 
         if (res.status !== 200) throw Error(body.message);
@@ -46,20 +33,20 @@ class PostView extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.state.text}</h2>
                 <ul>
                     {
                         this.state.list.map((item) => {
                             return (
-                                <li key={item.id}
-                                    value={item.id}
+                                <li key={item.pid}
+                                    value={item.pid}
                                     onClick={this.itemClicked}>
-                                    {item.msg}
+                                    {item.title}, {item.date_created.split("T")[0]}
                                 </li>
                             );
                         })
                     }
                 </ul>
+
             </div>
         );
     }

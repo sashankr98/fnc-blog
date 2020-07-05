@@ -24,6 +24,7 @@ class PostEditor extends React.Component {
 
         this.previewContent = this.previewContent.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
+        this.submitPost = this.submitPost.bind(this);
     }
 
     handleKeyCommand(command, editorState) {
@@ -60,6 +61,10 @@ class PostEditor extends React.Component {
         );
     }
 
+    titleChanged(event) {
+        this.setState({ title: event.target.value });
+    }
+
     previewContent() {
         if (!this.state.showPreview) {
             this.setState({ showPreview: true });
@@ -74,15 +79,31 @@ class PostEditor extends React.Component {
 
     }
 
-    titleChanged(event) {
-        this.setState({ title: event.target.value });
+    submitPost = async () => {
+        var markdown = stateToMarkdown(this.state.editorState.getCurrentContent());
+        var data = {
+            title: this.state.title,
+            content: markdown
+        }
+
+        var reqData = JSON.stringify(data);
+        console.log(reqData);
+
+        const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        console.log(await response.json());
     }
 
     render() {
         return (
             <div className="editor-page">
                 <h1>Create Post</h1>
-                <input type="text" value={this.state.title} onChange={this.titleChanged} placeholder="Title" />
+                <input type="text" value={this.state.title} onChange={this.titleChanged} placeholder="Title..." />
                 <div id="editor-root">
                     <BlockStyleControls
                         editorState={this.state.editorState}
@@ -101,10 +122,15 @@ class PostEditor extends React.Component {
                             blockStyleFn={getBlockStyle}
                             customStyleMap={styleMap}
                             textAlignment='left'
-                            spellCheck={true} />
+                        // spellCheck={true}
+                        />
                     </div>
                 </div>
-                <button onClick={this.previewContent}>Preview Content</button>
+                <div className="actions">
+                    <button onClick={this.previewContent}>Preview Content</button>
+                    <button onClick={this.submitPost}>Submit</button>
+                </div>
+
                 <div className={this.state.showPreview ? 'show-preview' : 'hide-preview'}>
                     <h1> {this.state.title} </h1>
                     <ReactMarkdown source={this.state.content} />
