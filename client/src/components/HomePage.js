@@ -9,7 +9,7 @@ import {
 
 import PostsView from './PostsView';
 import AboutView from './AboutView';
-import './HomePage.css';
+import './styles/HomePage.css';
 
 class HomePage extends React.Component {
     constructor(props) {

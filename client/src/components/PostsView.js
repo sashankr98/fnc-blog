@@ -1,5 +1,5 @@
 import React from 'react';
-import './PostsView.css';
+import './styles/PostsView.css';
 
 class PostView extends React.Component {
     constructor(props) {

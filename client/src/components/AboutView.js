@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './AboutView.css';
+import './styles/AboutView.css';
 import facebook from './icons/facebook.svg';
 import twitter from './icons/twitter.svg';
 import github from './icons/github.svg';
