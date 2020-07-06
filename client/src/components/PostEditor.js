@@ -4,7 +4,7 @@ import { stateToMarkdown } from 'draft-js-export-markdown';
 import ReactMarkdown from 'react-markdown';
 
 import 'draft-js/dist/Draft.css';
-import './PostEditor.css';
+import './styles/PostEditor.css';
 
 class PostEditor extends React.Component {
     constructor(props) {
@@ -103,7 +103,11 @@ class PostEditor extends React.Component {
         return (
             <div className="editor-page">
                 <h1>Create Post</h1>
-                <input type="text" value={this.state.title} onChange={this.titleChanged} placeholder="Title..." />
+                <input
+                    className="post-title"
+                    type="text"
+                    value={this.state.title}
+                    onChange={this.titleChanged} placeholder="Title..." />
                 <div id="editor-root">
                     <BlockStyleControls
                         editorState={this.state.editorState}

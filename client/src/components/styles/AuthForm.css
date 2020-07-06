@@ -1,0 +1,38 @@
+.auth-form {
+    width: 30%;
+    margin: 10% auto;
+    padding: 2em;
+    border: 1pt black solid;
+    border-radius: 0.5em;
+}
+
+.auth-form h2{
+    margin: 0em auto 0.5em;
+}
+
+.auth-inputs input {
+    display: inline-block;
+    width: 70%;
+    margin: 1em 0;
+    font-size: 12pt;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.auth-inputs button {
+    display: flex;
+	outline: none;
+	border: 0.5px black solid;
+	margin: 0.5em auto;
+	font-size: 12pt;
+	font-family: 'Playfair Display', serif;
+	padding: 0.5em;
+	transition: 0.2s;
+}
+
+.auth-inputs button:hover {
+	background-color: #CCCCCC;
+	cursor: pointer;
+	transition: 0.2s;
+}
