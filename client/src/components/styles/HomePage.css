@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.home-link {
+  text-decoration: none;
+}
+
 #pages {
   list-style: none;
   display: inline-block;

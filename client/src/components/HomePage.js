@@ -1,60 +1,52 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
+    NavLink,
     Redirect
 } from 'react-router-dom';
 
-import PostsView from './PostsView';
+import PostList from './PostList';
 import AboutView from './AboutView';
 import './styles/HomePage.css';
 
 class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            view: 'Posts'
-        };
-
-        this.setFocus = this.setFocus.bind(this);
-    }
-
-    setFocus(event) {
-        this.setState({
-            view: event.target.innerText
-        });
-    }
-
     render() {
         return (
-            <Router>
-                <div className="home-page">
-                    <header className="nav-bar">
+            <div className="home-page">
+                <header className="nav-bar">
+                    <Link
+                        className="home-link"
+                        to="/">
                         <h1>Friendly Neighbourhood Cucumber</h1>
-                        <ul id="pages">
-                            <li value="Posts">
-                                <Link
-                                    to="/posts"
-                                    className={this.state.view === 'Posts' ? 'focused' : null}
-                                    onClick={this.setFocus}>Posts</Link>
-                            </li>
-                            <li value="About">
-                                <Link
-                                    to="/about"
-                                    className={this.state.view === 'About' ? 'focused' : null}
-                                    onClick={this.setFocus}>About</Link>
-                            </li>
-                        </ul>
-                    </header>
-                    <Switch>
-                        <Redirect exact from="/" to="/posts" />
-                        <Route path="/posts" component={PostsView} />
-                        <Route path="/about" component={AboutView} />
-                    </Switch>
-                </div>
-            </Router>
+                    </Link>
+
+                    <ul id="pages">
+                        <li value="Posts">
+                            <NavLink
+                                to="/posts"
+                                // to={`${this.props.match.url}/posts`}
+                                activeClassName='focused'>
+                                Posts
+                                </NavLink>
+                        </li>
+                        <li value="About">
+                            <NavLink
+                                to="/about"
+                                // to={`${this.props.match.url}/about`}
+                                activeClassName='focused'>
+                                About
+                                </NavLink>
+                        </li>
+                    </ul>
+                </header>
+                <Switch>
+                    <Redirect exact from="/" to="/posts" />
+                    <Route path="/posts" component={PostList} />
+                    <Route path="/about" component={AboutView} />
+                </Switch>
+            </div>
         );
     }
 }

@@ -1,0 +1,12 @@
+.post-view {
+    width: 70%;
+    margin: auto;
+}
+
+.post-view h1 {
+    text-align: center;
+}
+
+.post-view p {
+    margin: 1.5em;
+}

@@ -14,10 +14,23 @@ router.get('/api/test', (req, res) => {
 });
 
 router.get('/api/getPostList', (req, res) => {
-    pool.query('SELECT pid, title, date_created FROM posts', (qErr, qRes) => {
+    pool.query('SELECT pid, title, date_created FROM posts ORDER BY date_created DESC', (qErr, qRes) => {
         res.json(qRes.rows);
     });
 });
+
+router.get('/api/getPost', (req, res) => {
+    pool.query('SELECT title, body FROM posts WHERE pid=$1',
+        [req.query.pid],
+        (qErr, qRes) => {
+            if (qErr) {
+                console.log(err);
+                res.send(err);
+            }
+
+            res.json(qRes.rows);
+        })
+})
 
 // POST Routes
 router.post('/api/submit', (req, res) => {
