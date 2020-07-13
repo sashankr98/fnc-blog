@@ -69,8 +69,7 @@ class PostList extends React.Component {
                             component={(props) => <PostView {...props} admin={this.props.admin} />} />)
                         : (<Route
                             path={`${this.props.match.path}/:pid`}
-                            component={PostView} />
-                        )
+                            component={PostView} />)
                 }
 
             </Switch>

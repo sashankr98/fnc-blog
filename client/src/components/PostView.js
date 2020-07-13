@@ -9,6 +9,7 @@ class PostView extends React.Component {
             tite: "",
             content: ""
         }
+        this.deletePost = this.deletePost.bind(this);
     }
 
     componentDidMount() {
@@ -30,20 +31,41 @@ class PostView extends React.Component {
         return resBody;
     }
 
+    deletePost = async () => {
+        const url = '/api/deletePost';
+        const data = {
+            pid: this.props.match.params.pid
+        };
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+        const body = await response.json();
+        console.log(body);
+    }
+
     render() {
         return (
             <div className="post-view">
                 <h1>{this.state.title}</h1>
                 <ReactMarkdown>{this.state.content}</ReactMarkdown>
-                <div>
+                <div className="actions">
 
                     {
                         this.props.admin ? (
-                            <ul className="actions">
+                            <ul className="actions-list">
                                 <li>Edit</li>
-                                <li>Delete</li>
+                                <li onClick={() => {
+                                    if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
+                                        this.deletePost()
+                                    }
+                                }}>Delete</li>
                             </ul>)
-                            : (<ul className="actions">
+                            : (<ul className="actions-list">
                                 <li>Share</li>
                             </ul>)
                     }

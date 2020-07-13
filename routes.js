@@ -25,21 +25,21 @@ router.get('/api/getPost', (req, res) => {
         (qErr, qRes) => {
             if (qErr) {
                 console.log(err);
-                res.send(err);
+                res.json(err);
             }
 
             res.json(qRes.rows);
         })
 })
 
-// POST Routes
+// Private Routes
 router.post('/api/submit', (req, res) => {
     pool.query('SELECT * FROM posts WHERE title=$1',
         [req.body.title],
         (err, data) => {
             if (err) {
                 console.log(err);
-                res.send(err);
+                res.json(err);
             }
 
             if (data.rows && data.rows.length > 0) {
@@ -63,4 +63,20 @@ router.post('/api/submit', (req, res) => {
         });
 });
 
-module.exports = router
+
+router.delete('/api/deletePost', (req, res) => {
+    console.log(req.body);
+
+    pool.query('DELETE FROM posts WHERE pid=$1', [req.body.pid],
+        (qErr, qRes) => {
+            if (qErr) {
+                console.log(qErr);
+                res.json(qErr);
+            }
+            console.log("Delete successful");
+            console.log(qRes.rows);
+            res.json(qRes.rows);
+        })
+});
+
+module.exports = router;
