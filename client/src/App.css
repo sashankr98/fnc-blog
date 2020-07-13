@@ -10,6 +10,11 @@
 	justify-content: center;
 }
 
+::selection {
+	background-color: #0052f6;
+	color: #fff;
+}
+
 h1 {
 	font-size: 28pt;
 	text-align: left;

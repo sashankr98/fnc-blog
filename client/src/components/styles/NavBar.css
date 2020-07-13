@@ -4,16 +4,16 @@
   text-align: center;
 }
 
-.home-link {
+.head-link {
   text-decoration: none;
 }
 
-#pages {
+.pages {
   list-style: none;
   display: inline-block;
 }
 
-#pages li {
+.pages li {
   display: inline-block;
   margin: 1em;
   font-family: 'Playfair Display', serif;
@@ -21,19 +21,19 @@
   transition: 0.2s;
 }
 
-#pages a {
+.pages a {
   text-decoration: none;
 }
 
-#pages a.focused {
+.pages a.focused {
   text-decoration: underline;
 }
 
-#pages:hover a {
+.pages:hover a {
   color: #999999;
   transition: 0.2s;
 }
 
-#pages a:hover {
+.pages a:hover {
   color: #000000;
 }

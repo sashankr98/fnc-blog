@@ -102,7 +102,6 @@ class PostEditor extends React.Component {
     render() {
         return (
             <div className="editor-page">
-                <h1>Create Post</h1>
                 <input
                     className="post-title"
                     type="text"

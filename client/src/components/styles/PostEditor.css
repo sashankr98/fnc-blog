@@ -95,7 +95,7 @@ input[type="text"].post-title{
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 	font-size: 23pt;
-	margin: 1em;
+	margin: 0 1em 1em;
 	outline: 0;
 	border: none;
 	width: 100%;

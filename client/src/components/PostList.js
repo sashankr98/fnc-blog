@@ -2,11 +2,11 @@ import React from 'react';
 import {
     Link,
     Switch,
-    Route,
-    withRouter
+    Route
 } from 'react-router-dom'
 import './styles/PostList.css';
 import PostView from './PostView';
+import PrivateRoute from './PrivateRoute';
 
 class PostList extends React.Component {
     constructor(props) {
@@ -62,13 +62,24 @@ class PostList extends React.Component {
                             );
                         })
                     )} />
-                <Route
-                    path={`${this.props.match.path}/:pid`}
-                    component={PostView} />
+                {
+                    this.props.admin ? (
+                        <PrivateRoute
+                            path={`${this.props.match.path}/:pid`}
+                            component={(props) => <PostView {...props} admin={this.props.admin} />} />)
+                        : (<Route
+                            path={`${this.props.match.path}/:pid`}
+                            component={PostView} />
+                        )
+                }
 
             </Switch>
         );
     }
+}
+
+PostList.defaultProps = {
+    admin: false
 }
 
 export default PostList;

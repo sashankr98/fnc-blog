@@ -10,3 +10,23 @@
 .post-view p {
     margin: 1.5em;
 }
+
+.actions {
+    list-style: none;
+}
+
+.actions li {
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    margin: 1em;
+}
+
+/* .actions:hover li {
+  transition: 0.2s;
+} */
+
+.actions li:hover {
+  color: #5890ff;
+  /* transition: 0.2s; */
+  cursor: pointer;
+}

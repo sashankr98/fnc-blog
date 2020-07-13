@@ -3,13 +3,12 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
+	Redirect,
 } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
-import PrivateRoute from './components/PrivateRoute'
-import PostEditor from './components/PostEditor';
-import AuthForm from './components/AuthForm';
-// import { AuthContext } from './components/utils/auth';
+import AdminPage from './components/AdminPage';
+import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 class App extends React.Component {
@@ -18,10 +17,9 @@ class App extends React.Component {
 			<Router>
 				<div className="App">
 					<Switch>
-						<PrivateRoute path="/editor" component={PostEditor} />
-						<Route path="/login" component={() => <AuthForm use="Login" />} />
-						<Route path="/signup" component={() => <AuthForm use="Sign Up" />} />
-						<Route path="/" component={HomePage} />
+						<Redirect exact path="/" to="/blog" />
+						<Route path="/blog" component={HomePage} />
+						<PrivateRoute path="/admin" component={AdminPage} />
 					</Switch>
 				</div>
 			</Router>

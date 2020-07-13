@@ -9,32 +9,29 @@ import {
 
 import PostList from './PostList';
 import AboutView from './AboutView';
-import './styles/HomePage.css';
+import './styles/NavBar.css';
 
 class HomePage extends React.Component {
     render() {
+        const url = this.props.match.url;
+        const path = this.props.match.path;
         return (
             <div className="home-page">
                 <header className="nav-bar">
-                    <Link
-                        className="home-link"
-                        to="/">
+                    <Link className="head-link" to="/">
                         <h1>Friendly Neighbourhood Cucumber</h1>
                     </Link>
-
-                    <ul id="pages">
-                        <li value="Posts">
+                    <ul className="pages">
+                        <li value="posts">
                             <NavLink
-                                to="/posts"
-                                // to={`${this.props.match.url}/posts`}
+                                to={`${url}/posts`}
                                 activeClassName='focused'>
                                 Posts
                                 </NavLink>
                         </li>
-                        <li value="About">
+                        <li value="pbout">
                             <NavLink
-                                to="/about"
-                                // to={`${this.props.match.url}/about`}
+                                to={`${url}/about`}
                                 activeClassName='focused'>
                                 About
                                 </NavLink>
@@ -42,9 +39,9 @@ class HomePage extends React.Component {
                     </ul>
                 </header>
                 <Switch>
-                    <Redirect exact from="/" to="/posts" />
-                    <Route path="/posts" component={PostList} />
-                    <Route path="/about" component={AboutView} />
+                    <Redirect exact from={`${path}`} to={`${path}/posts`} />
+                    <Route path={`${path}/posts`} component={PostList} />
+                    <Route path={`${path}/about`} component={AboutView} />
                 </Switch>
             </div>
         );

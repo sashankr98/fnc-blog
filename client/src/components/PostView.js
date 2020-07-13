@@ -35,9 +35,27 @@ class PostView extends React.Component {
             <div className="post-view">
                 <h1>{this.state.title}</h1>
                 <ReactMarkdown>{this.state.content}</ReactMarkdown>
+                <div>
+
+                    {
+                        this.props.admin ? (
+                            <ul className="actions">
+                                <li>Edit</li>
+                                <li>Delete</li>
+                            </ul>)
+                            : (<ul className="actions">
+                                <li>Share</li>
+                            </ul>)
+                    }
+
+                </div>
             </div>
         );
     }
+}
+
+PostView.defaultProps = {
+    admin: false
 }
 
 export default PostView;
