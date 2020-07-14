@@ -11,6 +11,10 @@
     margin: 1.5em;
 }
 
+.post-view hr {
+    margin: 2em 0 1em;
+}
+
 .actions-list {
     list-style: none;
 }

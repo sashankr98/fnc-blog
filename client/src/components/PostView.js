@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import Toast from './Toast';
 import './styles/PostView.css';
 
 class PostView extends React.Component {
@@ -7,9 +8,12 @@ class PostView extends React.Component {
         super(props);
         this.state = {
             tite: "",
-            content: ""
+            content: "",
+            message: ""
         }
-        this.deletePost = this.deletePost.bind(this);
+
+        this.deleteClicked = this.deleteClicked.bind(this);
+        this.shareClicked = this.shareClicked.bind(this);
     }
 
     componentDidMount() {
@@ -48,28 +52,40 @@ class PostView extends React.Component {
         console.log(body);
     }
 
+    deleteClicked() {
+        if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
+            this.deletePost().then(() => {
+                this.setState({
+                    message: "Post deleted"
+                });
+            });
+        }
+    }
+
+    shareClicked() {
+        navigator.clipboard.writeText(window.location.href);
+        this.setState({
+            message: "URL copied to clipboard"
+        });
+    }
+
     render() {
         return (
             <div className="post-view">
                 <h1>{this.state.title}</h1>
                 <ReactMarkdown>{this.state.content}</ReactMarkdown>
+                <hr />
                 <div className="actions">
-
                     {
                         this.props.admin ? (
                             <ul className="actions-list">
-                                <li>Edit</li>
-                                <li onClick={() => {
-                                    if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
-                                        this.deletePost()
-                                    }
-                                }}>Delete</li>
+                                <li onClick={this.deleteClicked}>Delete</li>
                             </ul>)
                             : (<ul className="actions-list">
-                                <li>Share</li>
+                                <li onClick={this.shareClicked}>Share</li>
                             </ul>)
                     }
-
+                    <Toast message={this.state.message} />
                 </div>
             </div>
         );
