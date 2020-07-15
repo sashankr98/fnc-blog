@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+.eslintrc
+
 /client/node_modules
 
 .env
