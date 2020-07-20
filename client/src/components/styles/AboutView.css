@@ -46,3 +46,11 @@ img {
 img:hover {
     opacity: 1;
 }
+
+#credit {
+    margin: 0.5em;
+}
+
+#credit a {
+    text-decoration: underline;
+}
