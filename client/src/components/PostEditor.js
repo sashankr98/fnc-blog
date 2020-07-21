@@ -3,7 +3,8 @@ import { Editor, EditorState, RichUtils } from 'draft-js';
 import { stateToMarkdown } from 'draft-js-export-markdown';
 import { stateFromMarkdown } from 'draft-js-import-markdown';
 import ReactMarkdown from 'react-markdown';
-import Toast from './Toast';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import toastOptions from './utils/ToastOptions';
 
 import 'draft-js/dist/Draft.css';
 import './styles/PostEditor.css';
@@ -15,8 +16,7 @@ class PostEditor extends React.Component {
             title: "",
             editorState: EditorState.createEmpty(),
             content: "",
-            showPreview: false,
-            message: ""
+            showPreview: false
         };
 
         this.onChange = editorState => this.setState({ editorState });
@@ -32,7 +32,6 @@ class PostEditor extends React.Component {
 
     componentDidMount() {
         if (this.props.update) {
-            // let draftState = stateFromMarkdown(this.props.current.content);
             this.setState({
                 title: this.props.current.title,
                 editorState: EditorState.createWithContent(stateFromMarkdown(this.props.current.content)),
@@ -94,7 +93,16 @@ class PostEditor extends React.Component {
     }
 
     submitPost = async () => {
+        if (!this.state.editorState.getCurrentContent().hasText()) {
+            toast('Body is empty. Unable to submit', toastOptions.ERROR);
+            return;
+        }
+        if (this.state.title === '') {
+            toast('Title is empty. Unable to submit', toastOptions.ERROR);
+            return;
+        }
         const markdown = stateToMarkdown(this.state.editorState.getCurrentContent());
+
         const data = {
             title: this.state.title,
             content: markdown
@@ -123,13 +131,16 @@ class PostEditor extends React.Component {
                     title: "",
                     editorState: EditorState.createEmpty(),
                     content: "",
-                    showPreview: false,
-                    message: "Post Created"
+                    showPreview: false
                 });
-                setTimeout(() => { this.setState({ message: "" }) }, 1500);
+                toast('Post created', {
+                    ...toastOptions.DEFUALT,
+                    toastId: 'submit-success-toast'
+                })
             }
         } else {
             console.log(await response.json());
+            toast('Unable to create/update post', toastOptions.ERROR);
         }
     }
 
@@ -172,8 +183,7 @@ class PostEditor extends React.Component {
                     <h1> {this.state.title} </h1>
                     <ReactMarkdown source={this.state.content} />
                 </div>
-
-                <Toast message={this.state.message} />
+                <ToastContainer transition={Slide} />
             </div>
         )
     }

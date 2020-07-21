@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Toast from './Toast';
 import { Link, Route, Switch } from 'react-router-dom';
 import PostEditor from './PostEditor';
-
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import toastOptions from './utils/ToastOptions';
 import './styles/PostView.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './styles/Toasts.css';
 
 class PostView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             tite: "",
-            content: "",
-            message: ""
+            content: ""
         }
         this.deleteClicked = this.deleteClicked.bind(this);
         this.shareClicked = this.shareClicked.bind(this);
@@ -50,24 +51,29 @@ class PostView extends React.Component {
             },
             body: JSON.stringify(data)
         });
-        const body = await response.json();
-        console.log(body);
+        return response;
     }
 
     deleteClicked() {
         if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
-            this.deletePost().then(() => {
-                this.setState({
-                    message: "Post deleted"
-                });
+            this.deletePost().then((response) => {
+                if (response.status === 200) {
+                    history.go(-1);
+                } else {
+                    toast('Unable to delete post', {
+                        ...toastOptions.ERROR,
+                        toastId: 'delete-fail-toast'
+                    })
+                }
             });
         }
     }
 
     shareClicked() {
         navigator.clipboard.writeText(window.location.href);
-        this.setState({
-            message: "URL copied to clipboard"
+        toast("URL copied to clipboard", {
+            ...toastOptions.DEFAULT,
+            toastId: 'share-toast'
         });
     }
 
@@ -95,8 +101,8 @@ class PostView extends React.Component {
                                             <li onClick={this.shareClicked}>Share</li>
                                         </ul>)
                                 }
-                                <Toast message={this.state.message} />
                             </div>
+                            <ToastContainer transition={Slide} />
                         </div>
                     )} />
                 <Route

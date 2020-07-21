@@ -1,0 +1,12 @@
+.Toastify__toast--default {
+    background-color: #0052f6;
+}
+
+.Toastify__toast--error {
+    background-color: #a30000;
+}
+
+.Toastify__toast * {
+    background-color: inherit;
+    color: #ffffff;
+}
