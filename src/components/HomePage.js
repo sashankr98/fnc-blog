@@ -29,7 +29,7 @@ class HomePage extends React.Component {
 								Posts
 								</NavLink>
 						</li>
-						<li value="pbout">
+						<li value="about">
 							<NavLink
 								to={`${url}/about`}
 								activeClassName='focused'>

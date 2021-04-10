@@ -7,8 +7,6 @@ import {
 } from 'react-router-dom';
 
 import HomePage from './components/HomePage';
-import AdminPage from './components/AdminPage';
-import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 class App extends React.Component {
@@ -19,7 +17,6 @@ class App extends React.Component {
                     <Switch>
                         <Redirect exact path="/" to="/blog" />
                         <Route path="/blog" component={HomePage} />
-                        <PrivateRoute path="/admin" component={AdminPage} />
                     </Switch>
                 </div>
             </Router>

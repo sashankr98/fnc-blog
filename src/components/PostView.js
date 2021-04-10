@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link, Route, Switch } from 'react-router-dom';
-import PostEditor from './PostEditor';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import toastOptions from './utils/ToastOptions';
 import './styles/PostView.css';
@@ -15,7 +14,7 @@ class PostView extends React.Component {
             tite: "",
             content: ""
         }
-        this.deleteClicked = this.deleteClicked.bind(this);
+        // this.deleteClicked = this.deleteClicked.bind(this);
         this.shareClicked = this.shareClicked.bind(this);
     }
 
@@ -28,46 +27,46 @@ class PostView extends React.Component {
             .catch(err => console.log(err));
     }
 
-    getPost = async () => {
-        const url = `/api/getPost?pid=${this.props.match.params.pid}`;
-        const res = await fetch(url);
-        const resBody = res.json();
+    // getPost = async () => {
+    //     const url = `/api/getPost?pid=${this.props.match.params.pid}`;
+    //     const res = await fetch(url);
+    //     const resBody = res.json();
 
-        if (res.status !== 200) throw Error(resBody.message);
+    //     if (res.status !== 200) throw Error(resBody.message);
 
-        return resBody;
-    }
+    //     return resBody;
+    // }
 
-    deletePost = async () => {
-        const url = '/api/deletePost';
-        const data = {
-            pid: this.props.match.params.pid
-        };
+    // deletePost = async () => {
+    //     const url = '/api/deletePost';
+    //     const data = {
+    //         pid: this.props.match.params.pid
+    //     };
 
-        const response = await fetch(url, {
-            method: 'DELETE',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-        return response;
-    }
+    //     const response = await fetch(url, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
+    //     return response;
+    // }
 
-    deleteClicked() {
-        if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
-            this.deletePost().then((response) => {
-                if (response.status === 200) {
-                    history.go(-1);
-                } else {
-                    toast('Unable to delete post', {
-                        ...toastOptions.ERROR,
-                        toastId: 'delete-fail-toast'
-                    })
-                }
-            });
-        }
-    }
+    // deleteClicked() {
+    //     if (window.confirm(`Are you sure you want to delete post with pid: ${this.props.match.params.pid}?`)) {
+    //         this.deletePost().then((response) => {
+    //             if (response.status === 200) {
+    //                 history.go(-1);
+    //             } else {
+    //                 toast('Unable to delete post', {
+    //                     ...toastOptions.ERROR,
+    //                     toastId: 'delete-fail-toast'
+    //                 })
+    //             }
+    //         });
+    //     }
+    // }
 
     shareClicked() {
         navigator.clipboard.writeText(window.location.href);
@@ -105,17 +104,6 @@ class PostView extends React.Component {
                             <ToastContainer transition={Slide} />
                         </div>
                     )} />
-                <Route
-                    path={`${this.props.match.path}/edit`}
-                    component={() => <PostEditor
-                        update={true}
-                        current={{
-                            pid: this.props.match.params.pid,
-                            title: this.state.title,
-                            content: this.state.content
-                        }} />
-                    }
-                />
             </Switch>
         );
     }

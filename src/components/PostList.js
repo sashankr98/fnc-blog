@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom'
 import './styles/PostList.css';
 import PostView from './PostView';
-import PrivateRoute from './PrivateRoute';
 
 class PostList extends React.Component {
     constructor(props) {
@@ -17,18 +16,18 @@ class PostList extends React.Component {
     }
 
     componentDidMount() {
-        this.getPostList()
-            .then(res => this.setState({ list: res }))
-            .catch(err => console.log(err));
+        // this.getPostList()
+        //     .then(res => this.setState({ list: res }))
+        //     .catch(err => console.log(err));
     }
 
-    getPostList = async () => {
-        const res = await fetch('/api/getPostList');
-        const body = await res.json();
+    // getPostList = async () => {
+    //     const res = await fetch('/api/getPostList');
+    //     const body = await res.json();
 
-        if (res.status !== 200) throw Error(body.message);
-        return body;
-    }
+    //     if (res.status !== 200) throw Error(body.message);
+    //     return body;
+    // }
 
     render() {
         return (
@@ -61,15 +60,8 @@ class PostList extends React.Component {
                             );
                         })
                     )} />
-                {
-                    this.props.admin ? (
-                        <PrivateRoute
-                            path={`${this.props.match.path}/:pid`}
-                            component={(props) => <PostView {...props} admin={this.props.admin} />} />)
-                        : (<Route
-                            path={`${this.props.match.path}/:pid`}
-                            component={PostView} />)
-                }
+                <Route path={`${this.props.match.path}/:pid`}
+                    component={PostView} />
 
             </Switch>
         );
