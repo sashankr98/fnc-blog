@@ -1,33 +1,7 @@
 {
     "short_name": "FNC Blog",
     "name": "Friendly Neighbourhood Cucumber Blog",
-    "icons": [
-        {
-            "src": "icons/facebook.svg",
-            "sizes": "512x512",
-            "type": "image/svg"
-        },
-        {
-            "src": "icons/github.svg",
-            "sizes": "512x512",
-            "type": "image/svg"
-        },
-        {
-            "src": "icons/instagram.svg",
-            "sizes": "512x512",
-            "type": "image/svg"
-        },
-        {
-            "src": "icons/linkedin.svg",
-            "sizes": "512x512",
-            "type": "image/svg"
-        },
-        {
-            "src": "icons/twitter.svg",
-            "sizes": "512x512",
-            "type": "image/svg"
-        }
-    ],
+    "icons": [],
     "start_url": ".",
     "display": "standalone"
 }

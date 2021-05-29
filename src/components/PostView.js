@@ -34,7 +34,9 @@ class PostView extends React.Component {
         return (
         <div className="post-view">
             <h1>{this.state.title}</h1>
-            <ReactMarkdown>{this.state.content}</ReactMarkdown>
+            <ReactMarkdown transformImageUri={(src) => `${process.env.PUBLIC_URL}/blog/images/${src}`}>
+                {this.state.content}
+            </ReactMarkdown>
             <hr />
         </div>)
     }
