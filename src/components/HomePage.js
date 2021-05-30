@@ -19,7 +19,7 @@ class HomePage extends React.Component {
 			<div className="home-page">
 				<header className="nav-bar">
 					<Link className="head-link" to="/">
-						<h1>Friendly Neighbourhood Cucumber</h1>
+						<h1>Stormy Escarpment</h1>
 					</Link>
 					<ul className="pages">
 						<li value="posts">
