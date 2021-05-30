@@ -1,5 +1,15 @@
+header, header *{
+  background-color: #364399;
+  color: #ffffff;
+}
+
+header::selection, header *::selection {
+  background-color: #ffffff;
+  color: #364399;
+}
+
 .nav-bar h1 {
-  margin: 1em 1em 0;
+  padding: 1em 1em 0;
   font-size: 30pt;
   text-align: center;
 }
@@ -16,7 +26,6 @@
 .pages li {
   display: inline-block;
   margin: 1em;
-  font-family: 'Playfair Display', serif;
   font-size: 18pt;
   transition: 0.2s;
 }
@@ -30,10 +39,10 @@
 }
 
 .pages:hover a {
-  color: #999999;
+  color: #aaaaaa;
   transition: 0.2s;
 }
 
 .pages a:hover {
-  color: #000000;
+  color: #ffffff;
 }

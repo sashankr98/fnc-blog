@@ -1,41 +1,13 @@
-.About {
-    width: 50%;
-    padding: 0%;
-    margin: auto;
+.about {
+    margin: 20px auto 15px;
 }
 
-.About p {
-    margin: 1em auto;
-}
-
-#social-intro {
-    text-align: center;
-    margin: 3em auto 0;
+.about p {
+    margin: 1.5em;
 }
 
 a {
     color: black;
-}
-
-#credit {
-    font-family: 'Playfair Display', serif;
-    font-size: x-small;
-}
-
-#social {
-    list-style: none;
-    display: inline-block;
-}
-
-#social li {
-    display: inline-block;
-    transition: 0.2s;
-    cursor: pointer;
-}
-
-#social:hover li:not(:hover) {
-    opacity: 0.5;
-    transition: 0.2s;
 }
 
 img {
@@ -45,12 +17,4 @@ img {
 
 img:hover {
     opacity: 1;
-}
-
-#credit {
-    margin: 0.5em;
-}
-
-#credit a {
-    text-decoration: underline;
 }

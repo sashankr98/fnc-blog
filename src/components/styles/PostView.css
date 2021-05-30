@@ -1,23 +1,22 @@
+
 .post-view {
-    width: 70%;
-    margin: auto;
+    margin: 20px auto 15px;
 }
 
 .post-view h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .post-view p {
-    margin: 1.5em;
+  margin: 1.5em;
 }
 
 .post-view hr {
-    margin: 3em 0 5em;
+  margin: 3em 3em 5em;
 }
 
-
 img {
-    display: block;
-    width: 80% !important;
-    margin: auto !important;
+  display: block;
+  width: 80% !important;
+  margin: auto !important;
 }

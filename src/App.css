@@ -2,7 +2,7 @@
 	padding: 0;
 	margin: 0;
 	background-color: #f4f4f4;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Roboto Slab', serif;
 }
 
 .App {
@@ -12,7 +12,7 @@
 }
 
 ::selection {
-	background-color: #0052f6;
+	background-color: #364399;
 	color: #fff;
 }
 
@@ -22,11 +22,10 @@ h1 {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Yeseva One', cursive;
 }
 
 p {
-	font-family: 'Montserrat', sans-serif;
 	text-align: justify;
 }
 
@@ -35,3 +34,31 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+@media (min-width: 0px) {
+	.post-view, .about {
+		width: 90%;
+	}
+	.box {
+		width: 60%;
+	}
+  }
+  
+  @media (min-width: 768px) {
+	.post-view, .about {
+	  	width: 80%;
+	}
+	.box {
+		width: 50%;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.post-view, .about {
+	  	width: 70%;
+	}
+	.box {
+		width: 30%;
+	}
+  }
+  

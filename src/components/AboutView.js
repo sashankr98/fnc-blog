@@ -20,7 +20,7 @@ class AboutView extends React.Component {
 
 	render() {
 		return (
-			<div className='About'>
+			<div className='about'>
 				<ReactMarkdown>{this.state.about}</ReactMarkdown>
 			</div>
 		)
