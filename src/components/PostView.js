@@ -14,10 +14,12 @@ class PostView extends React.Component {
     componentDidMount() {
         const path = `/blog/posts/${this.props.match.params.pid}.md`;
         this.getPost(path)
-            .then(res => this.setState({
-                title: res[0].title,
-                content: res
-            }))
+            .then((res) => {
+                console.log(res);
+                this.setState({
+                    title: res[0].title,
+                    content: res
+            })})
             .catch(err => console.log(err));
     }
 

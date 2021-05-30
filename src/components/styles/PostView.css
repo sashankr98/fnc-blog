@@ -11,12 +11,22 @@
   margin: 1.5em;
 }
 
+.post-view a {
+  color: #364399;
+}
+
 .post-view hr {
   margin: 3em 3em 5em;
 }
 
 img {
   display: block;
-  width: 80% !important;
+  width: 45% !important;
   margin: auto !important;
+  /* max-height:  !important; */
+}
+
+ul {
+  display: inline-block;
+  text-align: left;
 }
